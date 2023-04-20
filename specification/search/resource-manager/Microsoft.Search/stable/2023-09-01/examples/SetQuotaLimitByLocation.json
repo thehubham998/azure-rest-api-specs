@@ -1,0 +1,18 @@
+{
+    "parameters": {
+      "location": "westus",
+      "api-version": "2020-06-01",
+      "subscriptionId": "subid",
+      "sku":"standard",
+      "quotaCount":4
+    },
+    "responses": {
+      "200": {
+        "body": {
+                "sku":"standard",
+                "oldQuotaLimit":16,
+                "newQuotaLimit":20
+            }
+        }
+    }
+}

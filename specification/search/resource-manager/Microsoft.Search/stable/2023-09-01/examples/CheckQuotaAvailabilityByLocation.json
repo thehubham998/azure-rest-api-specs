@@ -1,0 +1,18 @@
+{
+    "parameters": {
+      "location": "westus",
+      "api-version": "2020-06-01",
+      "subscriptionId": "subid",
+      "sku":"standard",
+      "count":2
+    },
+    "responses": {
+      "200": {
+        "body": {
+                "sku":"standard",
+                "isAvailable":false,
+                "availabilityStatus": "The availability of this resource in the location is exceeding the threshold. Increase the regional limit and then update Quota"
+            }
+        }
+    }
+}

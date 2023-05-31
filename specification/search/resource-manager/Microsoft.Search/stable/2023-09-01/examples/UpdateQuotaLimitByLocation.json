@@ -13,8 +13,9 @@
     "200": {
       "body": {
         "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Search/locations/{location}/quotas/{skuName}",
-        "isAvailable": false,
-        "availabilityStatus": "The availability of this resource in the location is exceeding the threshold. Increase the regional limit and then update Quota",
+        "unit": "Count",
+        "requestedValue": 2,
+        "newLimit": 18,
         "name": {
           "value": "basic",
           "localizedValue": "B - Basic"

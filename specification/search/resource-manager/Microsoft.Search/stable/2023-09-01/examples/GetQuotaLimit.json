@@ -1,0 +1,21 @@
+{
+    "parameters": {
+        "location": "westus",
+        "api-version": "2023-09-01",
+        "subscriptionId": "subid",
+        "skuName": "free"
+    },
+    "responses": {
+        "200": {
+            "body": {
+                "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Search/locations/{location}/quotas/{skuName}",
+                "unit": "Count",
+                "limit": 16,
+                "name": {
+                    "value": "free",
+                    "localizedValue": "F - Free"
+                }
+            }
+        }
+    }
+}

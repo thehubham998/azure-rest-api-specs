@@ -1245,6 +1245,308 @@
           }
         }
       }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Search/locations/{location}/usages": {
+      "get": {
+        "tags": [
+          "Usages"
+        ],
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "operationId": "Usages_ListBySubscription",
+        "x-ms-examples": {
+          "GetQuotaUsagesList": {
+            "$ref": "./examples/GetQuotaUsagesList.json"
+          }
+        },
+        "description": "Gets a list of all Search quota usages in the given subscription.",
+        "externalDocs": {
+          "url": "https://aka.ms/search-manage"
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/ClientRequestIdParameter"
+          },
+          {
+            "$ref": "#/parameters/LocationParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation succeeded. The response contains the list of all Search quota usages for the given subscription.",
+            "schema": {
+              "$ref": "#/definitions/QuotaUsagesListResult"
+            }
+          },
+          "default": {
+            "description": "An unexpected error occurred during the operation.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Search/locations/{location}/usages/{skuName}": {
+      "get": {
+        "tags": [
+          "Usages"
+        ],
+        "operationId": "UsageBySubscriptionSku",
+        "x-ms-examples": {
+          "GetQuotaUsage": {
+            "$ref": "./examples/GetQuotaUsage.json"
+          }
+        },
+        "description": "Gets the quota usage for a search sku in the given subscription.",
+        "externalDocs": {
+          "url": "https://aka.ms/search-manage"
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/ClientRequestIdParameter"
+          },
+          {
+            "$ref": "#/parameters/LocationParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/SkuNameParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation succeeded. The response contains the quota usage of a search service sku for the given subscription.",
+            "schema": {
+              "$ref": "#/definitions/QuotaUsageResult"
+            }
+          },
+          "default": {
+            "description": "An unexpected error occurred during the operation.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Search/locations/{location}/quotas": {
+      "get": {
+        "tags": [
+          "Quotas"
+        ],
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "operationId": "Quotas_ListBySubscription",
+        "x-ms-examples": {
+          "GetQuotaLimitsList": {
+            "$ref": "./examples/GetQuotaLimitsList.json"
+          }
+        },
+        "description": "Gets a list of all Search quota limits in the given subscription.",
+        "externalDocs": {
+          "url": "https://aka.ms/search-manage"
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/ClientRequestIdParameter"
+          },
+          {
+            "$ref": "#/parameters/LocationParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation succeeded. The response contains the list of all Search quota limits for the given subscription.",
+            "schema": {
+              "$ref": "#/definitions/QuotaLimitsListResult"
+            }
+          },
+          "default": {
+            "description": "An unexpected error occurred during the operation.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Search/locations/{location}/quotas/{skuName}": {
+      "get": {
+        "tags": [
+          "Quotas"
+        ],
+        "operationId": "QuotaBySubscriptionSku",
+        "x-ms-examples": {
+          "GetQuotaLimit": {
+            "$ref": "./examples/GetQuotaLimit.json"
+          }
+        },
+        "description": "Gets the quota limit for a search sku in the given subscription.",
+        "externalDocs": {
+          "url": "https://aka.ms/search-manage"
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/ClientRequestIdParameter"
+          },
+          {
+            "$ref": "#/parameters/LocationParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/SkuNameParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation succeeded. The response contains the quota limit of a search service sku for the given subscription.",
+            "schema": {
+              "$ref": "#/definitions/QuotaLimitResult"
+            }
+          },
+          "default": {
+            "description": "An unexpected error occurred during the operation.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Quotas"
+        ],
+        "operationId": "Quotas_CheckAvailability",
+        "x-ms-examples": {
+          "CheckQuotaAvailabilityByLocation": {
+            "$ref": "./examples/CheckQuotaAvailabilityByLocation.json"
+          }
+        },
+        "description": "Checks for the availability of resources for the specified search service sku in the given location.",
+        "externalDocs": {
+          "url": "https://aka.ms/search-manage"
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/LocationParameter"
+          },
+          {
+            "$ref": "#/parameters/SearchServiceNameParameter"
+          },
+          {
+            "name": "additionalQuotaInput",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AdditionalQuotaInput"
+            },
+            "description": "The additional quota details for the search service sku."
+          },
+          {
+            "$ref": "#/parameters/ClientRequestIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/SkuNameParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested quota is available for the sku in the region for the subscription.",
+            "schema": {
+              "$ref": "#/definitions/CheckQuotaAvailabilityOutput"
+            }
+          },
+          "default": {
+            "description": "HTTP 404 (Not Found): The subscription or search service sku could not be found. HTTP 409 (Conflict): The specified subscription is disabled.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Quotas"
+        ],
+        "operationId": "Quotas_UpdateLimit",
+        "x-ms-examples": {
+          "UpdateQuotaLimitByLocation": {
+            "$ref": "./examples/UpdateQuotaLimitByLocation.json"
+          }
+        },
+        "description": "Updates quota for the search service sku by the requested value in the given location.",
+        "externalDocs": {
+          "url": "https://aka.ms/search-manage"
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/LocationParameter"
+          },
+          {
+            "name": "additionalQuotaInput",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AdditionalQuotaInput"
+            },
+            "description": "The additional quota details for the search service sku."
+          },
+          {
+            "$ref": "#/parameters/ClientRequestIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The quota was successfully updated based on availability in the region.",
+            "schema": {
+              "$ref": "#/definitions/QuotaUpdateOutput"
+            }
+          },
+          "default": {
+            "description": "HTTP 400 (Bad Request): The given input definition is invalid; See the error code and message in the response for details. HTTP 404 (Not Found): The subscription could not be found. HTTP 409 (Conflict): The specified subscription is disabled.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -2306,7 +2608,67 @@
         "type"
       ],
       "description": "Identity for the resource."
-    }
+    },
+    "QuotaUsagesListResult": {
+      "properties": {
+        "value": {
+          "readOnly": true,
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/QuotaUsageResult"
+          },
+          "description": "The quota usages for the SKUs supported by Azure Cognitive Search."
+        },
+        "nextLink": {
+          "readOnly": true,
+          "type": "string",
+          "description": "Request URL that can be used to query next page of quota usages. Returned when the total number of requested quota usages exceed maximum page size."
+        }
+      },
+      "description": "Response containing the quota usage information for all the supported skus of Azure Cognitive Search service.",
+      "x-ms-external": true
+    },
+    "QuotaUsageResult": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The resource id of the quota usage sku endpoint for Microsoft.Search provider."
+        },
+        "unit": {
+          "type": "string",
+          "description": "The unit of measurement for the search sku."
+        },
+        "currentValue": {
+          "type": "integer",
+          "description": "The currently used up value for the particular search sku."
+        },
+        "limit": {
+          "type": "integer",
+          "description": "The quota limit for the particular search sku."
+        },
+        "name": {
+          "readOnly": true,
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string",
+              "description": "The sku name supported by Azure Cognitive Search."
+            },
+            "localizedValue": {
+              "type": "string",
+              "description": "The localized string value for the sku supported by Azure Cognitive Search."
+            }
+          },
+          "description": "The name of the sku supported by Azure Cognitive Search."
+        }
+      },
+      "description": "Describes the quota usage for a particular sku supported by Azure Cgonitive Search."
+    },
+    "QuotaLimitsListResult": {},
+    "QuotaLimitResult": {},
+    "AdditionalQuotaInput": {},
+    "CheckQuotaAvailabilityOutput": {},
+    "QuotaUpdateOutput": {}
   },
   "parameters": {
     "ResourceGroupNameParameter": {
@@ -2376,6 +2738,20 @@
       "required": true,
       "type": "string",
       "description": "The API version to use for each request."
+    },
+    "LocationParameter": {
+      "name": "location",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The unique location name for a Microsoft Azure geographic region."
+    },
+    "SkuNameParameter": {
+      "name": "SkuName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The unique search service sku name supported by Azure Cognitive Search."
     }
   }
 }
